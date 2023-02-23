@@ -14,7 +14,7 @@ class _LoginPagina extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.grey[3000],
       body: SafeArea(
           child: Center(
         child: Column(
