@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'login.dart';
+import 'package:proyecto_flutter/pagina_principal.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 // ignore_for_file: prefer_const_constructors
@@ -14,12 +14,12 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  //Arranca la comprobacion de login
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Login(),
+      home: PaginaPrincipal(),
     );
   }
 }
