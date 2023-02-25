@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:proyecto_flutter/aplicacion/barra_lateral.dart';
 import 'package:proyecto_flutter/login/login.dart';
-import '../home.dart';
 
 class ComprobacionLogin extends StatelessWidget {
   const ComprobacionLogin({super.key});
@@ -14,7 +14,7 @@ class ComprobacionLogin extends StatelessWidget {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return Home();
+            return BarraLateral();
           } else {
             return Login();
           }

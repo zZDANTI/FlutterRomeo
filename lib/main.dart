@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:proyecto_flutter/aplicacion/barra_lateral.dart';
-//import 'package:proyecto_flutter/login/comprobacion_login.dart';
+import 'package:proyecto_flutter/login/comprobacion_login.dart';
 //import 'package:firebase_core/firebase_core.dart';
 
 // ignore_for_file: prefer_const_constructors
@@ -20,8 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      //home: ComprobacionLogin(),
-      home: BarraLateral(),
+      home: ComprobacionLogin(),
       theme: ThemeData(primarySwatch: Colors.deepPurple),
     );
   }
