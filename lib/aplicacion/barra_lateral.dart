@@ -1,8 +1,11 @@
+// ignore_for_file: prefer_const_constructors, non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
 import 'package:proyecto_flutter/aplicacion/favoritos.dart';
 import 'package:proyecto_flutter/aplicacion/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:proyecto_flutter/login/login.dart';
 
 class BarraLateral extends StatefulWidget {
   const BarraLateral({super.key});
@@ -16,7 +19,6 @@ class _BarraLateralState extends State<BarraLateral> {
   List<ScreenHiddenDrawer> paginas = [];
 
   //Texto Personalizado para el navegador
-  // ignore: prefer_const_constructors
   final textoPersonalizado = TextStyle(
     fontWeight: FontWeight.bold,
     fontSize: 18,
@@ -54,8 +56,9 @@ class _BarraLateralState extends State<BarraLateral> {
           baseStyle: textoPersonalizado,
           selectedStyle: textoPersonalizado,
           colorLineSelected: Colors.deepPurple,
+          onTap: () => CerrarSesion(),
         ),
-        FirebaseAuth.instance.signOut() as Widget,
+        Login(),
       ),
     ];
   }
@@ -69,4 +72,8 @@ class _BarraLateralState extends State<BarraLateral> {
       slidePercent: 40,
     );
   }
+}
+
+void CerrarSesion() {
+  FirebaseAuth.instance.signOut();
 }
