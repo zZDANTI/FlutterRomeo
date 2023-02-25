@@ -11,7 +11,6 @@ class PaginaPrincipal extends StatelessWidget {
     return Scaffold(
       body: StreamBuilder<User?>(
         //Si hay un usuario dentro te lleva al Principio si no vas al Login
-
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
