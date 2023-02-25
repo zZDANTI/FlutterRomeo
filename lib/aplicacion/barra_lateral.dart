@@ -31,7 +31,6 @@ class _BarraLateralState extends State<BarraLateral> {
 
     paginas = [
       //Cajon del menu
-
       ScreenHiddenDrawer(
         ItemHiddenMenu(
           name: 'Home',

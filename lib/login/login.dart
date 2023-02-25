@@ -11,7 +11,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginPagina extends State<Login> {
-  //Texto Controlador
+  //Texto Controlador del Login
 
   final emailLogin = TextEditingController();
   final contrasenyaLogin = TextEditingController();
@@ -21,13 +21,6 @@ class _LoginPagina extends State<Login> {
       email: emailLogin.text.trim(),
       password: contrasenyaLogin.text.trim(),
     );
-  }
-
-  @override
-  void dispose() {
-    emailLogin.dispose();
-    contrasenyaLogin.dispose();
-    super.dispose();
   }
 
   @override
@@ -65,7 +58,6 @@ class _LoginPagina extends State<Login> {
                   child: TextField(
                     //Variable
                     controller: emailLogin,
-
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: 'Email',
@@ -134,6 +126,7 @@ class _LoginPagina extends State<Login> {
 
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
+              // ignore: prefer_const_literals_to_create_immutables
               children: [
                 Text(
                   '¿Aun no te has registrado? ',
