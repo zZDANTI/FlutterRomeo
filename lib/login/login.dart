@@ -1,4 +1,7 @@
+// ignore_for_file: sort_child_properties_last
+
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 // ignore_for_file: prefer_const_constructors
@@ -26,7 +29,7 @@ class _LoginPagina extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.deepPurple[200],
       body: SafeArea(
           child: Center(
         child: SingleChildScrollView(
@@ -38,7 +41,7 @@ class _LoginPagina extends State<Login> {
                   fontSize: 24,
                 )),
 
-            Text('Bienvenido',
+            Text('Bienvenido y Bienvenida',
                 style: TextStyle(
                   fontSize: 20,
                 )),
@@ -135,12 +138,23 @@ class _LoginPagina extends State<Login> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Text(
-                  'Registrate aqui',
-                  style: TextStyle(
-                    color: Colors.blue,
-                    fontWeight: FontWeight.bold,
+                GestureDetector(
+                  child: Text(
+                    'Registrate aqui',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
+                  onTap: () {
+                    showCupertinoModalPopup(
+                      context: context,
+                      builder: (BuildContext builder) => CupertinoAlertDialog(
+                        title: Text(
+                            'Lo siento la parte de registrarse está en mantenimiento cualquier pregunta sobre como registrarse acuda al Servicio Tecnico del Hotel Romeo'),
+                      ),
+                    );
+                  },
                 ),
               ],
             )
