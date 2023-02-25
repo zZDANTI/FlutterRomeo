@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:proyecto_flutter/login.dart';
-import 'package:proyecto_flutter/home.dart';
+import 'package:proyecto_flutter/login/login.dart';
+import '../home.dart';
 
-class PaginaPrincipal extends StatelessWidget {
-  const PaginaPrincipal({super.key});
+class ComprobacionLogin extends StatelessWidget {
+  const ComprobacionLogin({super.key});
 
   @override
   Widget build(BuildContext context) {
