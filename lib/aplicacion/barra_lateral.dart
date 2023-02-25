@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
 import 'package:proyecto_flutter/aplicacion/favoritos.dart';
 import 'package:proyecto_flutter/aplicacion/home.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class BarraLateral extends StatefulWidget {
   const BarraLateral({super.key});
@@ -11,36 +12,50 @@ class BarraLateral extends StatefulWidget {
 }
 
 class _BarraLateralState extends State<BarraLateral> {
+  final user = FirebaseAuth.instance.currentUser!;
   List<ScreenHiddenDrawer> paginas = [];
+
+  //Texto Personalizado para el navegador
+  // ignore: prefer_const_constructors
+  final textoPersonalizado = TextStyle(
+    fontWeight: FontWeight.bold,
+    fontSize: 18,
+    color: Colors.white,
+  );
 
   @override
   void initState() {
     super.initState();
 
     paginas = [
+      //Cajon del menu
+
       ScreenHiddenDrawer(
         ItemHiddenMenu(
           name: 'Home',
-          baseStyle: TextStyle(),
-          selectedStyle: TextStyle(),
+          baseStyle: textoPersonalizado,
+          selectedStyle: textoPersonalizado,
+          colorLineSelected: Colors.deepPurple,
         ),
         Home(),
       ),
       ScreenHiddenDrawer(
         ItemHiddenMenu(
           name: 'Favoritos',
-          baseStyle: TextStyle(),
-          selectedStyle: TextStyle(),
+          baseStyle: textoPersonalizado,
+          selectedStyle: textoPersonalizado,
+          colorLineSelected: Colors.deepPurple,
         ),
         Favoritos(),
       ),
       ScreenHiddenDrawer(
         ItemHiddenMenu(
           name: 'Cerrar Sesión',
-          baseStyle: TextStyle(),
-          selectedStyle: TextStyle(),
+          baseStyle: textoPersonalizado,
+          selectedStyle: textoPersonalizado,
+          colorLineSelected: Colors.deepPurple,
         ),
-        Favoritos(),
+        FirebaseAuth.instance.signOut() as Widget,
       ),
     ];
   }
@@ -51,6 +66,7 @@ class _BarraLateralState extends State<BarraLateral> {
       backgroundColorMenu: Colors.deepPurple,
       screens: paginas,
       initPositionSelected: 0,
+      slidePercent: 40,
     );
   }
 }

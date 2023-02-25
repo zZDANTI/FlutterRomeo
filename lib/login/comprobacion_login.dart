@@ -14,8 +14,10 @@ class ComprobacionLogin extends StatelessWidget {
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
+            //Fragments de aplicacion
             return BarraLateral();
           } else {
+            //Si no hay cuenta te manda al login
             return Login();
           }
         },
