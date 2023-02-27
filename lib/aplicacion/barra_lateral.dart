@@ -15,7 +15,7 @@ class BarraLateral extends StatefulWidget {
 }
 
 class _BarraLateralState extends State<BarraLateral> {
-  final user = FirebaseAuth.instance.currentUser!;
+  //final user = FirebaseAuth.instance.currentUser!;
   List<ScreenHiddenDrawer> paginas = [];
 
   //Texto Personalizado para el navegador

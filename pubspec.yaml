@@ -42,6 +42,9 @@ dependencies:
   #Barra Lateral
   hidden_drawer_menu: ^3.0.1
 
+  #Http
+  http: ^0.13.5
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
