@@ -5,6 +5,7 @@ import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
 import 'package:proyecto_flutter/aplicacion/favoritos.dart';
 import 'package:proyecto_flutter/aplicacion/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:proyecto_flutter/aplicacion/prueba.dart';
 import 'package:proyecto_flutter/login/login.dart';
 
 class BarraLateral extends StatefulWidget {
@@ -38,7 +39,7 @@ class _BarraLateralState extends State<BarraLateral> {
           selectedStyle: textoPersonalizado,
           colorLineSelected: Colors.deepPurple,
         ),
-        Home(),
+        Prueba(),
       ),
       ScreenHiddenDrawer(
         ItemHiddenMenu(
