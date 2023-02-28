@@ -3,9 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:hidden_drawer_menu/hidden_drawer_menu.dart';
 import 'package:proyecto_flutter/aplicacion/favoritos.dart';
-import 'package:proyecto_flutter/aplicacion/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:proyecto_flutter/aplicacion/prueba.dart';
+import 'package:proyecto_flutter/aplicacion/ocio.dart';
 import 'package:proyecto_flutter/login/login.dart';
 
 class BarraLateral extends StatefulWidget {
@@ -34,12 +33,12 @@ class _BarraLateralState extends State<BarraLateral> {
       //Cajon del menu
       ScreenHiddenDrawer(
         ItemHiddenMenu(
-          name: 'Home',
+          name: 'Ocios',
           baseStyle: textoPersonalizado,
           selectedStyle: textoPersonalizado,
           colorLineSelected: Colors.deepPurple,
         ),
-        Prueba(),
+        Ocio(),
       ),
       ScreenHiddenDrawer(
         ItemHiddenMenu(
