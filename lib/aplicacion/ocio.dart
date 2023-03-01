@@ -5,6 +5,7 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:proyecto_flutter/aplicacion/ocioDetalles.dart';
 
 String url =
     "https://practicacampico-958ff-default-rtdb.europe-west1.firebasedatabase.app/ocio.json";
@@ -36,7 +37,7 @@ class MyHomePageState extends State {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           print(snapshot);
-          return ListView(children: listado(snapshot.data));
+          return ListView(children: listado(snapshot.data, context));
         } else {
           print("No hay información");
           return Text("");
@@ -46,14 +47,27 @@ class MyHomePageState extends State {
   }
 }
 
-List<Widget> listado(List info) {
+List<Widget> listado(List info, context) {
   List<Widget> lista = [];
   info.forEach((elemento) {
     estrellas = elemento['estrellas'];
+    var nombre = elemento['nombre'];
+    var imagen = elemento['imagen'];
+    var corazon = elemento['favoritos'];
     lista.add(
       GestureDetector(
         onTap: () {
-          print(elemento['nombre']);
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => OcioDetalles(
+                nombre: nombre,
+                estrellas: estrellas,
+                corazon: corazon,
+                imagen: imagen,
+              ),
+            ),
+          );
         },
         child: Stack(
           children: [
@@ -137,6 +151,7 @@ List<Widget> listado(List info) {
         ),
       ),
     );
+    lista.add(Divider());
   });
   return lista;
 }
