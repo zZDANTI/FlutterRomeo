@@ -108,7 +108,25 @@ List<Widget> listado(List info, context) {
                   children: [
                     Padding(padding: EdgeInsets.only(left: 20)),
                     InkWell(
-                      onTap: () {},
+                      onTap: () async {
+                        if (corazon == "false") {
+                          corazon = "true";
+                        } else {
+                          corazon = "false";
+                        }
+
+                        final url = Uri.parse(
+                            'https://practicacampico-958ff-default-rtdb.europe-west1.firebasedatabase.app/ocio.json');
+                        final response =
+                            await http.patch(url, body: {"favoritos": "true"});
+
+                        print(response.statusCode);
+                        if (response.statusCode == 200) {
+                          print("Ha cambiado su decision");
+                        } else {
+                          print("Error");
+                        }
+                      },
                       child: Icon(
                         elemento['favoritos'] == true
                             ? Icons.favorite
