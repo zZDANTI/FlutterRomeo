@@ -118,7 +118,7 @@ List<Widget> listado(List info, context) {
                         final url = Uri.parse(
                             'https://practicacampico-958ff-default-rtdb.europe-west1.firebasedatabase.app/ocio.json');
                         final response =
-                            await http.patch(url, body: {"favoritos": "true"});
+                            await http.PATCH(url, body: {"favoritos": "true"});
 
                         print(response.statusCode);
                         if (response.statusCode == 200) {
