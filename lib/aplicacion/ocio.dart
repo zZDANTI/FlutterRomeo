@@ -109,26 +109,21 @@ List<Widget> listado(List info, context) {
                     Padding(padding: EdgeInsets.only(left: 20)),
                     InkWell(
                       onTap: () async {
-                        if (corazon == "false") {
-                          corazon = "true";
+                        if (corazon == false) {
+                          corazon = true;
                         } else {
-                          corazon = "false";
+                          corazon = false;
                         }
 
-                        final url = Uri.parse(
-                            'https://practicacampico-958ff-default-rtdb.europe-west1.firebasedatabase.app/ocio.json');
-                        final response =
-                            await http.patch(url, body: {"favoritos": "true"});
-
-                        print(response.statusCode);
-                        if (response.statusCode == 200) {
-                          print("Ha cambiado su decision");
-                        } else {
-                          print("Error");
-                        }
+                        final urlj = Uri.parse(
+                            "https://practicacampico-958ff-default-rtdb.europe-west1.firebasedatabase.app/ocio/0.json");
+                        final response = await http.patch(
+                          urlj,
+                          body: jsonEncode({'favoritos': corazon}),
+                        );
                       },
                       child: Icon(
-                        elemento['favoritos'] == true
+                        corazon == true
                             ? Icons.favorite
                             : Icons.favorite_border,
                         color: Colors.red,
