@@ -151,7 +151,7 @@ class _LoginPagina extends State<Login> {
                       context: context,
                       builder: (BuildContext builder) => CupertinoAlertDialog(
                         title: Text(
-                            'Lo siento la parte de registrarse está en mantenimiento cualquier pregunta sobre como registrarse acuda al Servicio Tecnico del Hotel Romeo'),
+                            'Lo siento la parte de registrarse está en mantenimiento, cualquier pregunta sobre como registrarse acuda al Servicio Tecnico del Hotel Romeo'),
                       ),
                     );
                   },
