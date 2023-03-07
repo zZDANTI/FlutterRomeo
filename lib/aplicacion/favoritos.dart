@@ -3,6 +3,7 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
@@ -60,6 +61,7 @@ class MyHomePageState extends State {
             onDoubleTap: () {
               setState(() {
                 _corazonRojo(corazon, id);
+                HapticFeedback.heavyImpact();
               });
             },
             child: Stack(
@@ -105,6 +107,7 @@ class MyHomePageState extends State {
                           onTap: () {
                             setState(() {
                               _corazonRojo(corazon, id);
+                              HapticFeedback.heavyImpact();
                             });
                           },
                           child: Icon(

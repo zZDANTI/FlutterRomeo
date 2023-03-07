@@ -4,6 +4,7 @@ import 'dart:collection';
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:proyecto_flutter/aplicacion/ocioDetalles.dart';
@@ -73,6 +74,7 @@ class MyHomePageState extends State {
           onDoubleTap: () {
             setState(() {
               _corazonRojo(corazon, id);
+              HapticFeedback.heavyImpact();
             });
           },
           onTap: () {
@@ -137,6 +139,7 @@ class MyHomePageState extends State {
                         onTap: () {
                           setState(() {
                             _corazonRojo(corazon, id);
+                            HapticFeedback.heavyImpact();
                           });
                         },
                         child: Icon(
