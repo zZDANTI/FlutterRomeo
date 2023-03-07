@@ -1,5 +1,6 @@
 // ignore_for_file: sort_child_properties_last, prefer_const_constructors, prefer_interpolation_to_compose_strings
 
+import 'dart:collection';
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
@@ -9,8 +10,6 @@ import 'package:proyecto_flutter/aplicacion/ocioDetalles.dart';
 
 String url =
     "https://practicacampico-958ff-default-rtdb.europe-west1.firebasedatabase.app/ocio.json";
-
-int estrellas = 0;
 
 Future _getListado() async {
   Uri miUrl = Uri.parse(url);
@@ -53,13 +52,19 @@ class MyHomePageState extends State {
     info.forEach((elemento) {
       //Variables
 
-      estrellas = elemento['estrellas'];
+      var estrellas = elemento['estrellas'];
       var nombre = elemento['nombre'];
       var imagen = elemento['imagen'];
       var corazon = elemento['favoritos'];
       var id = elemento['id'];
       var ubicacion = elemento['ubicacion'];
       var url = elemento['url'];
+      var descripcion = elemento["descripcion"];
+      var precio = elemento["precio"];
+
+      //Variables comentarios
+
+      var comentarios = elemento["comentarios"];
 
       //Lista de Ocios
 
@@ -81,6 +86,9 @@ class MyHomePageState extends State {
                   corazon: corazon,
                   imagen: imagen,
                   url: url,
+                  descripcion: descripcion,
+                  precio: precio,
+                  comentarios: comentarios,
                 ),
               ),
             );
