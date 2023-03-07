@@ -18,7 +18,6 @@ Future _getListado() async {
   final respuesta = await http.get(miUrl);
 
   if (respuesta.statusCode == 200) {
-    print(respuesta.body);
     return jsonDecode(respuesta.body);
   } else {
     print("Error con la respuesta");
@@ -37,10 +36,8 @@ class MyHomePageState extends State {
         future: _getListado(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            print(snapshot);
             return ListView(children: listado(snapshot.data, context));
           } else {
-            print("No hay información");
             return Text("");
           }
         },

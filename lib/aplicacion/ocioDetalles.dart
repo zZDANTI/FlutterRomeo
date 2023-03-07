@@ -326,9 +326,29 @@ class PaginaValoraciones extends StatelessWidget {
             width: double.infinity,
             height: double.infinity,
             color: Colors.deepOrange,
+            child: ListView(
+              children: ListaComentarios(comentarios),
+            ),
           ),
         ),
       ),
     );
   }
+}
+
+List<Widget> ListaComentarios(List<dynamic> info) {
+  List<Widget> lista = [];
+  info.forEach((element) {
+    lista.add(
+      Column(
+        children: [
+          Text(
+            element["usuario"],
+          ),
+        ],
+      ),
+    );
+  });
+
+  return lista;
 }
