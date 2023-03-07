@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:proyecto_flutter/aplicacion/favoritos.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -13,6 +14,7 @@ class OcioDetalles extends StatefulWidget {
   final String imagen;
   final bool corazon;
   final String ubicacion;
+  final String url;
 
   OcioDetalles({
     super.key,
@@ -21,6 +23,7 @@ class OcioDetalles extends StatefulWidget {
     required this.imagen,
     required this.corazon,
     required this.ubicacion,
+    required this.url,
   });
 
   @override
@@ -107,7 +110,7 @@ class _OcioDetallesState extends State<OcioDetalles> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: List.generate(5, (index) {
-                    if (index + 1 <= estrellas) {
+                    if (index + 1 <= widget.estrellas) {
                       // ignore: prefer_const_constructors
                       return Icon(
                         Icons.star,
@@ -127,7 +130,9 @@ class _OcioDetallesState extends State<OcioDetalles> {
               ),
             ],
           ),
-          Prueba()
+          Prueba(
+            url: widget.url,
+          )
         ],
       ),
     );
@@ -136,6 +141,10 @@ class _OcioDetallesState extends State<OcioDetalles> {
 
 class Prueba extends StatelessWidget {
   final _controller = PageController();
+
+  final String url;
+
+  Prueba({required this.url});
 
   @override
   Widget build(BuildContext context) {
@@ -147,9 +156,11 @@ class Prueba extends StatelessWidget {
             child: PageView(
               controller: _controller,
               children: [
-                PaginaQR(),
                 PaginaComentarios(),
                 PaginaValoraciones(),
+                PaginaQR(
+                  url: url,
+                ),
               ],
             ),
           ),
@@ -160,8 +171,53 @@ class Prueba extends StatelessWidget {
   }
 }
 
+class PaginaQR extends StatelessWidget {
+  final String url;
+
+  PaginaQR({required this.url});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.transparent,
+      child: Padding(
+        padding: const EdgeInsets.all(5.0),
+        child: Container(
+          width: double.infinity,
+          height: double.infinity,
+          color: Colors.transparent,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(
+                  top: 40,
+                ),
+              ),
+              Text(
+                "Escanea el codigo QR para mas información",
+                style: TextStyle(fontSize: 20),
+                textAlign: TextAlign.center,
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                  top: 20,
+                ),
+              ),
+              QrImage(
+                data: url,
+                version: QrVersions.auto,
+                size: 250.0,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class PaginaComentarios extends StatelessWidget {
-  late OcioDetalles ocioDetalles;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -174,29 +230,8 @@ class PaginaComentarios extends StatelessWidget {
             width: double.infinity,
             height: double.infinity,
             color: Colors.red,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage(ocioDetalles.imagen),
-                fit: BoxFit.cover,
-              ),
-            ),
+            child: Center(),
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class PaginaQR extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.transparent,
-      child: Padding(
-        padding: const EdgeInsets.all(5.0),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(10),
-          child: Container(color: Colors.black),
         ),
       ),
     );

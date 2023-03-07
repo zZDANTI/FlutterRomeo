@@ -59,6 +59,7 @@ class MyHomePageState extends State {
       var corazon = elemento['favoritos'];
       var id = elemento['id'];
       var ubicacion = elemento['ubicacion'];
+      var url = elemento['url'];
 
       //Lista de Ocios
 
@@ -79,6 +80,7 @@ class MyHomePageState extends State {
                   estrellas: estrellas,
                   corazon: corazon,
                   imagen: imagen,
+                  url: url,
                 ),
               ),
             );
