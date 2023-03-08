@@ -158,23 +158,14 @@ class MyHomePageState extends State {
                 height: 50,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children: List.generate(5, (index) {
-                    if (index + 1 <= estrellas) {
-                      // ignore: prefer_const_constructors
-                      return Icon(
-                        Icons.star,
+                  children: [
+                    for (int i = 0; i < 5; i++)
+                      Icon(
+                        i < estrellas ? Icons.star : Icons.star_border,
                         color: Colors.amber,
-                        size: 25,
-                      );
-                    } else {
-                      // ignore: prefer_const_constructors
-                      return Icon(
-                        Icons.star_border,
-                        color: Colors.amber,
-                        size: 25,
-                      );
-                    }
-                  }),
+                        size: 20,
+                      ),
+                  ],
                 ),
               ),
             ],

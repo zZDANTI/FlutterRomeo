@@ -1,7 +1,5 @@
 // ignore_for_file: prefer_const_constructors, deprecated_member_use
 
-import 'dart:html';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
@@ -269,24 +267,14 @@ class PaginaReview extends StatelessWidget {
                         padding: EdgeInsets.only(left: 95, top: 6),
                         height: 50,
                         child: Row(
-                          children: List.generate(5, (index) {
-                            if (index + 1 <= estrellas) {
-                              // ignore: prefer_const_constructors
-
-                              return Icon(
-                                Icons.star,
+                          children: [
+                            for (int i = 0; i < 5; i++)
+                              Icon(
+                                i < estrellas ? Icons.star : Icons.star_border,
                                 color: Colors.amber,
-                                size: 30,
-                              );
-                            } else {
-                              // ignore: prefer_const_constructors
-                              return Icon(
-                                Icons.star_border,
-                                color: Colors.amber,
-                                size: 30,
-                              );
-                            }
-                          }),
+                                size: 20,
+                              ),
+                          ],
                         ),
                       ),
                     ],
@@ -327,7 +315,7 @@ class PaginaValoraciones extends StatelessWidget {
           child: Container(
             width: double.infinity,
             height: double.infinity,
-            color: Colors.deepOrange,
+            color: Colors.transparent,
             child: ListView(
               children: ListaComentarios(comentarios),
             ),
@@ -340,18 +328,59 @@ class PaginaValoraciones extends StatelessWidget {
 
 List<Widget> ListaComentarios(List<dynamic> info) {
   List<Widget> lista = [];
-  info.forEach((element) {
-    lista.add(
-      Scaffold(
-        backgroundColor: Colors.deepPurple[200],
-        body: Container(
-          child: Text(
-            element["usuario"],
+  info.forEach(
+    (element) {
+      int estrellas = element["puntuacion"];
+      lista.add(
+        Container(
+          height: 110,
+          width: double.infinity,
+          child: Stack(
+            children: [
+              Row(
+                children: [
+                  Container(
+                    padding: EdgeInsets.only(left: 10, top: 10),
+                    child: Text(
+                      element["usuario"],
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Container(
+                width: double.infinity,
+                height: 50,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    for (int i = 0; i < 5; i++)
+                      Icon(
+                        i < estrellas ? Icons.star : Icons.star_border,
+                        color: Colors.amber,
+                        size: 20,
+                      ),
+                    Padding(
+                      padding: EdgeInsets.only(right: 10, top: 10),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.only(top: 50, left: 15, right: 15),
+                child: Text(
+                  element["comentario"],
+                ),
+              )
+            ],
           ),
         ),
-      ),
-    );
-  });
+      );
+      lista.add(Divider());
+    },
+  );
 
   return lista;
 }
