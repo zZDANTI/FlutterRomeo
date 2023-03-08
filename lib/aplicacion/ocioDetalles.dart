@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, deprecated_member_use
 
+import 'dart:html';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
@@ -340,12 +342,13 @@ List<Widget> ListaComentarios(List<dynamic> info) {
   List<Widget> lista = [];
   info.forEach((element) {
     lista.add(
-      Column(
-        children: [
-          Text(
+      Scaffold(
+        backgroundColor: Colors.deepPurple[200],
+        body: Container(
+          child: Text(
             element["usuario"],
           ),
-        ],
+        ),
       ),
     );
   });
